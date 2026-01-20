@@ -10,6 +10,10 @@ const userSchema = new Schema({
     require: [true, "Email is required"],
     unique: true,
   },
+  emailValidated: {
+    type: Boolean,
+    default: false,
+  },
   password: {
     type: String,
     require: [true, "Password, is required"],

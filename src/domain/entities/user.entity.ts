@@ -22,7 +22,6 @@ export class UserEntity {
       throw CustomError.badRequest("Missing emailValidated");
     if (!password) throw CustomError.badRequest("Missing password");
     if (!role) throw CustomError.badRequest("Missing role");
-    if (!img) throw CustomError.badRequest("Missing img");
 
     return new UserEntity(
       _id || id,

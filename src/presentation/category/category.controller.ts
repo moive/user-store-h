@@ -22,10 +22,13 @@ export class CategoryController {
       .createCategory(createCategoryDto!, req.body.user)
       .then((category) => res.status(201).json(category))
       .catch((error) => this.handleError(error, res));
-    // res.json(req.body);
   };
 
   getCategories = (req: Request, res: Response) => {
-    res.json("Get Categories");
+    this.categoryService
+      .getCategories()
+      .then((catergories) => res.status(200).json(catergories))
+      .catch((error) => this.handleError(error, res));
+    // res.json("Get Categories");
   };
 }

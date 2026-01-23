@@ -28,4 +28,13 @@ const userSchema = new Schema({
   },
 });
 
+userSchema.set("toJSON", {
+  virtuals: true,
+  versionKey: false,
+  transform: function (doc, ret) {
+    Reflect.deleteProperty(ret, "_id"); // delete ret._id
+    Reflect.deleteProperty(ret, "password"); // delete ret._id
+  },
+});
+
 export const UserModel = model("User", userSchema);

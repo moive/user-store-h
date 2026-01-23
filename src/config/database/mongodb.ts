@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 
 interface IOptions {
   mongoUrl: string;
@@ -6,7 +6,7 @@ interface IOptions {
 }
 
 export class MongoDatabase {
-  static async connection(options: IOptions) {
+  static async connected(options: IOptions) {
     const { mongoUrl, dbName } = options;
 
     try {
@@ -19,5 +19,9 @@ export class MongoDatabase {
       console.log("Connection failed to mongodb");
       throw error;
     }
+  }
+
+  static async disconnect() {
+    await mongoose.disconnect();
   }
 }

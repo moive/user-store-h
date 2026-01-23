@@ -8,7 +8,7 @@ import { Server } from "./presentation/server";
 })();
 
 function main() {
-  MongoDatabase.connection({
+  MongoDatabase.connected({
     dbName: envs.MONGO_DB_NAME,
     mongoUrl: envs.MONGO_URL,
   });

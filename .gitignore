@@ -8,3 +8,5 @@ build/
 coverage/
 mongo-data/
 postgres-data/
+uploads/*
+!uploads/.gitkeep

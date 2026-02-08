@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { FileUploaderController } from "./file-uploader.controller";
 import { FileUploadService } from "../services";
+import { FileUploadMiddleware } from "../middlewares/file-upload.middleware";
 
 export class FileUploadRoutes {
   static get routes(): Router {
@@ -9,6 +10,8 @@ export class FileUploadRoutes {
     const { uploadFile, uploadMultipleFiles } = new FileUploaderController(
       new FileUploadService(),
     );
+
+    router.use(FileUploadMiddleware.containFiles);
 
     router.post("/single/:type", uploadFile);
     router.post("/multiple/:type", uploadMultipleFiles);

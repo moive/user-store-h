@@ -18,14 +18,6 @@ export class FileUploaderController {
   uploadFile = (req: Request, res: Response) => {
     const files = req.files;
     const type = req.params.type as string;
-    const validTypes = ["users", "products", "categories"];
-
-    if (!validTypes.includes(type)) {
-      return res
-        .status(400)
-        .json({ error: `Invalid type: ${type}, valid types: ${validTypes}` });
-    }
-
     const file = req.body.files.at(0) as UploadedFile;
 
     this.fileUploadService
@@ -36,14 +28,6 @@ export class FileUploaderController {
 
   uploadMultipleFiles = (req: Request, res: Response) => {
     const type = req.params.type as string;
-    const validTypes = ["users", "products", "categories"];
-
-    if (!validTypes.includes(type)) {
-      return res
-        .status(400)
-        .json({ error: `Invalid type: ${type}, valid types: ${validTypes}` });
-    }
-
     const files = req.body.files as UploadedFile[];
 
     this.fileUploadService
